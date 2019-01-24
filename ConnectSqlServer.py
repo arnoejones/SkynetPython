@@ -15,7 +15,7 @@ cursor = connection.cursor()
 '''
 results = the entire result set from the query
 '''
-results = cursor.execute("select distinct IP from GameLogs")
+results = cursor.execute("select distinct IP from GameLogs Order by IP")
 
 for result in results:
     print(result)
