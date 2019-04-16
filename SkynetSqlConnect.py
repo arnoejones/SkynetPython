@@ -2,6 +2,8 @@ import pandas.io.sql as psql
 from sqlalchemy import create_engine
 
 #Skynet production db
+# Query the SQL Server database and put the results into a Pandas dataframe. This will
+# allow easier manipulation and graphics displays.
 def getData():
     ServerName = 'rnop-ctpa02'
     Database = 'FTA'
@@ -20,8 +22,17 @@ def getData():
           "GROUP BY Bet, GameName, AI, Denom " \
           "ORDER BY GameName " \
           "ASC"
-    df = psql.read_sql(sql, engine)
-    return df
 
-df2 = getData()
-print(df2)
+    df = psql.read_sql(sql, engine)
+    
+    # test: read one row at a time
+    # for ix in df.index:
+    #         ser: object = df.loc[ix:ix]
+    #         print(ser)
+
+    return df
+#
+# df2 = getData()
+# print(df2[['AI','Game Name']].nunique())
+# print(df2.info())
+# print(df2.describe())
